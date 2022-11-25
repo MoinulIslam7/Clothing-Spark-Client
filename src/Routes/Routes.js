@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: () => fetch(`product.json`),
+                loader: () => fetch(`http://localhost:5000/products`),
                 element: <Home></Home>
             },
             {
