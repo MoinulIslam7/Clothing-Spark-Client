@@ -10,8 +10,8 @@ const CategoryDetails = () => {
                 {
                     products.map(product =>
                         <div key={product.id}>
-                            <div className="card w-96 h-5/6 bg-base-100 shadow-xl">
-                                <figure className="px-10 pt-10">
+                            <div className="card w-96 h-5/6 bg-sky-700 mx-auto shadow-xl">
+                                <figure className="px-20 pt-20">
                                     <img  src={product.image} alt="Shoes"  />
                                 </figure>
                                 <div className="card-body text-left">
