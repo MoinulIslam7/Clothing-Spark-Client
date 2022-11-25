@@ -14,11 +14,18 @@ const CategoryDetails = () => {
                                 <figure className="px-10 pt-10">
                                     <img  src={product.image} alt="Shoes"  />
                                 </figure>
-                                <div className="card-body items-center text-center">
-                                    <h2 className="card-title">{product.product_name}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                                    <div className="card-actions">
-                                        <button className="btn btn-primary">Buy Now</button>
+                                <div className="card-body text-left">
+                                    <h2 className="card-title justify-center">{product.product_name}</h2>
+                                    <p>location: {product.location}</p>
+                                    <p>Resale Price: {product.resalePrice} Taka</p>
+                                    <p>Original price: {product.originalPrice} Taka</p>
+                                    <p>Used Duration: {product.usedTime}</p>
+                                    <p>Post Time: {product.postTime}</p>
+                                    <p>Seller Name: {product.sellersName}</p>
+                                    
+
+                                    <div className="card-actions justify-center">
+                                        <button className="btn btn-primary">Book Now</button>
                                     </div>
                                 </div>
                             </div>

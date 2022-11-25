@@ -13,7 +13,7 @@ const CategoriesCard = ({categoryData}) => {
                 <div className="card-actions justify-center">
                     <Link to={`/categoryDetails/${id}`}>
                         
-                        <button className='border-2 rounded bg-blue-600 text-white px-4 py-1 '>View Product On this Category</button>
+                        <button className=' btn btn-primary border-2 rounded px-4 py-1 '>View Product On this Category</button>
                     </Link>
                 </div>
             </div>
