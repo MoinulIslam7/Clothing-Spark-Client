@@ -1,6 +1,6 @@
 [
     {
-        "category": "Kids",
+        "category": "Kids Collections",
         "id": 1,
         "img": "https://img.freepik.com/free-vector/cartoon-autumn-winter-kids-clothing-collection_52683-66992.jpg?w=360",
         "products": [
@@ -29,7 +29,7 @@
         ]
     },
     {
-        "category": "Women",
+        "category": "Womens Collections",
         "id": 2,
         "img": "https://i.ibb.co/wCMZCn5/Dell-Inspiron-3501-i5-11th-Gen-MX330-Black-Laptop.jpg",
         "products": [
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "category": "Man",
+        "category": "Mans Collections",
         "id": 3,
         "img": "https://priyoshopbackup.blob.core.windows.net/priyoshop/content/Images/Thumbs/0241784_stripe-polo-shirt-for-men-bb-c_415.jpeg",
         "products": [
