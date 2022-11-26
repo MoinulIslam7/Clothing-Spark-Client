@@ -10,8 +10,9 @@ const Signup = () => {
 
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const navigate = useNavigate();
+    
+
     
     const handleSignUp = (data) => {
         console.log(data);
@@ -19,7 +20,6 @@ const Signup = () => {
         createUser(data.email, data.password, data.status)
             .then(() => {
                 toast.success("User Create Successfully");
-                navigate('/')
                 const userInfo = {
                     displayName: data.name
                 }
@@ -33,7 +33,7 @@ const Signup = () => {
                 setSignUpError(error.message)
             });
     }
-    // save user in database
+    // save user in  database
     const saveUser = (name, email, status) =>{
         const user ={name, email, status};
         fetch('http://localhost:5000/users', {
@@ -45,8 +45,7 @@ const Signup = () => {
         })
         .then(res => res.json())
         .then(data =>{
-           setCreatedUserEmail(email);
-                
+            navigate('/')    
         })
     }
     return (
