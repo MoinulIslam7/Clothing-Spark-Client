@@ -10,13 +10,13 @@ const Signup = () => {
 
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-    // const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const navigate = useNavigate();
     
     const handleSignUp = (data) => {
         console.log(data);
         setSignUpError('');
-        createUser(data.email, data.password, data.category)
+        createUser(data.email, data.password, data.status)
             .then(() => {
                 toast.success("User Create Successfully");
                 navigate('/')
@@ -24,31 +24,33 @@ const Signup = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                .then(() => {
+                    saveUser(data.name, data.email, data.status);
+                })
                     .catch(error => console.log(error));
             })
             .catch(error => {
                 setSignUpError(error.message)
             });
     }
-    // // save user in database
-    // const saveUser = (name, email) =>{
-    //     const user ={name, email};
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //        setCreatedUserEmail(email);
+    // save user in database
+    const saveUser = (name, email, status) =>{
+        const user ={name, email, status};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+           setCreatedUserEmail(email);
                 
-    //     })
-    // }
+        })
+    }
     return (
-        <div className='lg:flex justify-center h-[800px] items-center'>
+        <div className='lg:flex justify-center  items-center'>
             <div>
                 <img className=' h-3/4' src={signup} alt="" />
             </div>
@@ -80,7 +82,7 @@ const Signup = () => {
 
                         })} type="password" className="input input-bordered w-full max-w-xs" />
 
-                        <select className=' my-4 p-4' {...register("Status", { required: true })}>
+                        <select className=' my-4 p-4' {...register("status", { required: true })}>
                             <option value="">Please Select Your Status..</option>
                             <option value="seller">Seller</option>
                             <option value="user">User</option>
