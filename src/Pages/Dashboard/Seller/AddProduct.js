@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProduct = () => {
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
 
     const handleSubmit = event => {
@@ -15,19 +15,21 @@ const AddProduct = () => {
         const location = form.location.value;
         const phone = form.phone.value;
         const used = form.used.value;
+        const condition = form.condition.value;
         const resalePrice = form.resalePrice.value;
         const originalPrice = form.originalPrice.value;
         const sellerName = form.sellerName.value;
-        const sellerEmail = user?.email;
+        const email = user?.email;
 
         const product = {
             productName,
             sellerName,
-            sellerEmail,
+            email,
             originalPrice,
             resalePrice,
             location,
             used,
+            condition,
             phone,
         }
         console.log(product)
@@ -88,6 +90,18 @@ const AddProduct = () => {
                             </label>
                             <input name='used' id="used" aria-labelledby="used" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " placeholder="e.g: 1 year / 6 months " required />
                         </div>
+                        <div className="mt-6 w-full">
+                            <label htmlFor="condition" className="text-sm font-medium leading-none text-gray-800">
+                                {" "}
+                               Condition of the product{" "}
+                            </label>
+                            <select name='condition' id='condition' className="select w-full my-2 bg-gray-200 border rounded text-xs text-gray-900" required>
+                                <option disabled selected>select condition</option>
+                                <option>excellent</option>
+                                <option>good</option>
+                                <option>fair</option>
+                            </select>
+                        </div>
 
 
                         <div className="mt-6 w-full">
@@ -112,7 +126,7 @@ const AddProduct = () => {
                                 {" "}
                                 Your Name{" "}
                             </label>
-                            <input name='sellerName' disabled defaultValue={user?.displayName} id="sellerName" aria-labelledby="sellerName" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 "  required />
+                            <input name='sellerName' disabled defaultValue={user?.displayName} id="sellerName" aria-labelledby="sellerName" type="text" className="bg-gray-200 border rounded text-xs font-medium leading-none placeholder-gray-800 text-gray-800 py-3 w-full pl-3 mt-2 " required />
                         </div>
                         <input className='w-full btn btn-primary mt-10' type="submit" value="Submit" />
 
