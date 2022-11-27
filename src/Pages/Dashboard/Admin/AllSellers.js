@@ -2,14 +2,14 @@ import React, { useEffect, useState, useContext} from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
 
-const AllBuyers = () => {
+const AllSellers = () => {
     const [buyers, setBuyers] = useState([]);
     const {user} = useContext(AuthContext);
     useEffect(() => {
         fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => {
-                const showBuyers = data.filter(buyer => buyer.status === "user")
+                const showBuyers = data.filter(buyer => buyer.status === "seller")
                 setBuyers(showBuyers)
             })
     }, [user])
@@ -57,7 +57,7 @@ const AllBuyers = () => {
                                 <td>
                                     {user?.email}
                                 </td>
-                                <td>{user?.status === 'user' ? 'Buyer' : 'Seller'}</td>
+                                <td>{user?.status === 'seller' ? 'Seller' : 'Buyer'}</td>
                                 <th>
                                     <button onClick={() => handleDelete(user)} className="btn btn-error btn-sm">Delete</button>
                                 </th>
@@ -74,4 +74,4 @@ const AllBuyers = () => {
     );
 };
 
-export default AllBuyers;
+export default AllSellers;
