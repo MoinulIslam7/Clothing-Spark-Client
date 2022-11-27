@@ -3,6 +3,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main"
 import Blog from "../Pages/Blog/Blog";
 import CategoryDetails from "../Pages/CategoryDetails/CategoryDetails";
+import AllBuyers from "../Pages/Dashboard/Admin/AllBuyers";
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import MyWishList from "../Pages/Dashboard/MyWishList/MyWishList";
 import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/mybuyers',
                 element: <MyBuyers></MyBuyers>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AllBuyers></AllBuyers>
             },
         ]
     },
