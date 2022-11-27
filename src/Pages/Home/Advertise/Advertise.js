@@ -64,7 +64,9 @@ const Advertise = () => {
                                         <h2 className='text-xl'>Used Time: {product.used}</h2>
                                         <div className='flex justify-evenly mt-10'>
                                         </div>
-
+                                        <Link>
+                                            <button className="btn btn-primary">Book Now</button>
+                                        </Link>
                                         {
                                             isSeller &&
                                             <Link onClick={() => handleDelete(product)}>
