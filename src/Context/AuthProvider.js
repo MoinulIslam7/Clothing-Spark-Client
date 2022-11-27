@@ -40,7 +40,7 @@ const AuthProvider = ({children}) => {
             console.log("user Observing");
             setUser(currentUser);
             setLoading(false);
-        } )
+        })
 
         return () => unSubcribe();
     }, [])

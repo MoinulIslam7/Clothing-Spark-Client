@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-// jwt token 
-const UseToken = email => {
+
+const useToken = email => {
     const [token, setToken] = useState('');
     useEffect(() => {
         if (email) {
@@ -11,10 +11,9 @@ const UseToken = email => {
                         localStorage.setItem('accessToken', data.accessToken);
                         setToken(data.accessToken);
                     }
-                })
-        }
-    }, [email])
+                });
+    }, []);
     return [token];
 }
 
-export default UseToken;
+export default useToken;

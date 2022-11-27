@@ -4,29 +4,38 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import signup from '../../Assets/signup/signup.jpeg'
 import { AuthContext } from '../../Context/AuthProvider';
+import useToken from '../../Hooks/useToken';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
-    
 
-    
+    if(token){
+        navigate('/');
+    }
+
+
+
+
     const handleSignUp = (data) => {
-        console.log(data);
         setSignUpError('');
-        createUser(data.email, data.password, data.status)
-            .then(() => {
-                toast.success("User Create Successfully");
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                .then(() => {
-                    saveUser(data.name, data.email, data.status);
-                })
+                    .then(() => {
+                        saveUser(data.name, data.email, data.status);
+                    })
                     .catch(error => console.log(error));
             })
             .catch(error => {
@@ -34,8 +43,8 @@ const Signup = () => {
             });
     }
     // save user in  database
-    const saveUser = (name, email, status) =>{
-        const user ={name, email, status};
+    const saveUser = (name, email, status) => {
+        const user = { name, email, status };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -43,11 +52,12 @@ const Signup = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data =>{
-            navigate('/')    
-        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
+            })
     }
+
     return (
         <div className='lg:flex justify-center  items-center'>
             <div>
