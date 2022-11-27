@@ -29,7 +29,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='mt-10 text-center'>
-                    <p>Copyright © 2022 - All right reserved by Moinul Islam</p>
+                    <p>Copyright © 2022 - All right reserved by Clothing Spark </p>
                 </div>
             </footer>
         </div>

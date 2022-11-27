@@ -6,7 +6,7 @@ const CategoriesCard = ({categoryData}) => {
     return (
         <div className="card card-compact w-96 h-3/4 shadow-xl p-3">
             <div className="card-body">
-                <img className='w-full' src={img} alt="" />
+                <img className='w-full h-96' src={img} alt="" />
                 <h2 className="card-title justify-center">{category}</h2>
                 <div className="card-actions justify-center">
                     <Link to={`/categoryDetails/${_id}`}>

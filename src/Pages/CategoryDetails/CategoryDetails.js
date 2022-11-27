@@ -5,7 +5,35 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const CategoryDetails = () => {
     const { products } = useLoaderData();
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
+
+    const handleWishList = (product) =>{
+        const wishList = {
+            name: user.displayName,
+            email: user.email,
+            productName: product.product_name,
+            resalePrice: product.resalePrice,
+            originalPrice: product.originalPrice,
+        }
+        console.log(wishList);
+        fetch('http://localhost:5000/wishlist', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(wishList)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success('Product add to wishlist!!');
+                }
+                else {
+                    toast.error(data.message);
+                }
+            })
+    }
 
     const handleBooking = event => {
         event.preventDefault();
@@ -53,7 +81,7 @@ const CategoryDetails = () => {
                         <div key={i}>
                             <div className="card w-96 h-5/6 bg-sky-700 mx-auto shadow-xl">
                                 <figure className="px-20 pt-20">
-                                    <img src={product.image} alt="Shoes" />
+                                    <img className='w-full h-96' src={product.image} alt="Shoes" />
                                 </figure>
                                 <div className="card-body text-left">
                                     <h2 className="card-title justify-center">{product.product_name}</h2>
@@ -63,9 +91,10 @@ const CategoryDetails = () => {
                                     <p className='border-2 p-2'>Used Duration: {product.usedTime}</p>
                                     <p className='border-2 p-2'>Post Time: {product.postTime}</p>
                                     <p className='border-2 p-2'>Seller Name: {product.sellersName}</p>
-
-                                    <div className="card-actions justify-center">
+                                    
+                                    <div className="card-actions justify-center flex">
                                         <label htmlFor="booking-modal" className="btn">Book Now</label>
+                                        <button onClick={() => handleWishList(product)} className='btn'>Add to Wishlist</button>
                                         <div>
                                             <input type="checkbox" id="booking-modal" className="modal-toggle" />
                                             <div className="modal">
@@ -76,10 +105,11 @@ const CategoryDetails = () => {
                                                         <input name='email' type="text" disabled defaultValue={user?.email} className="input input-bordered w-full " />
                                                         <input name='productName' type="text" disabled defaultValue={product?.product_name} className="input input-bordered w-full " />
                                                         <input name='resalePrice' type="text" disabled defaultValue={product.resalePrice} className="input input-bordered w-full" />
-                                                        <input name='phone' type="text" placeholder='Your Phone Number' className="input input-borderedw-full" />
-                                                        <input name='location' type="text" placeholder='Meeting Location' className="input input-bordered w-full" />
+                                                        <input required name='phone' type="text" placeholder='Your Phone Number' className="input input-bordered w-full" />
+                                                        <input required name='location' type="text" placeholder='Meeting Location' className="input input-bordered w-full " />
+
                                                         <div className="modal-action">
-                                                            <input className='btn btn-primary' type="Submit" value="Submit" />
+                                                            <input htmlFor="booking-modal" className='btn btn-primary' type="Submit" value="Submit" />
                                                         </div>
                                                     </form>
                                                 </div>
