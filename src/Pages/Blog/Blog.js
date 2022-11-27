@@ -34,7 +34,7 @@ const Blog = () => {
             <div>
                 <h2 className='text-2xl text-center'>React vs. Angular vs. Vue?</h2>
                 <p className='text-justify mb-10'>Angular, React and Vue are all highly popular JavaScript libraries and frameworks that help developers build complex, reactive and modern user interfaces for the web. Actually, with additional libraries like React Native, Ionic (with Angular or with React) or NativeScript you can even build native mobile apps for mobile devices with help of Angular, React and Vue. One important note first: There is no best framework or library here. All three libraries are very popular for good reasons. They all have their strengths and weaknesses and you can generally use either of the libraries for any project. lets see briefly: </p>
-                <img src="https://www.angularminds.com/site_data/static/images/angular-react-vue/comparison-angular-react-vue.png" alt="" />
+                <img className='mx-auto' src="https://www.angularminds.com/site_data/static/images/angular-react-vue/comparison-angular-react-vue.png" alt="" />
             </div>
         </div>
     );

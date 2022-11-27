@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
@@ -39,23 +39,21 @@ const MyProducts = () => {
                     refetch();
                 }
 
-                // const remaining= myProducts.filter(product => product._id )
             })
 
     }
     // 
     return (
         <div>
-            <h2 className='text-3xl text-center font-semibold  mt-10'>My products</h2>
-
+            <h2 className='text-3xl font-semibold  mt-10'>My products:</h2>
             <div>
                 {
-                    SellerProduct.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>You Have not any Products</h2> :
+                    SellerProduct.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>You Have not add any Products</h2> :
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 m-5 md:m-20'>
                             {
                                 SellerProduct.map(product => <div key={product._id} className="card w-full shadow-xl bg-blue-500">
                                     <div className="card-body">
-                                        <h2 className="card-title">Prouduct Name: {product.productName}</h2>
+                                        <h2 className="card-title">Product Name: {product.productName}</h2>
                                         <h2 className='text-xl'>Seller Name: {product.sellerName}</h2>
                                         <h2 className='text-xl'>Product Name: {product.productName}</h2>
                                         <h2 className='text-xl'>Resale Price: {product.resalePrice} BDT</h2>
