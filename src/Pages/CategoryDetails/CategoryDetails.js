@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import UseBuyer from '../../Hooks/UseBuyer';
 
 const CategoryDetails = () => {
     const { products } = useLoaderData();
     const { user } = useContext(AuthContext);
+    const [isBuyer] = UseBuyer(user?.email)
 
     const handleWishList = (product) => {
         const wishList = {
@@ -94,7 +96,12 @@ const CategoryDetails = () => {
 
                                     <div className="card-actions justify-center flex">
                                         <label htmlFor="booking-modal" className="btn">Book Now</label>
-                                        <button onClick={() => handleWishList(product)} className='btn'>Add to Wishlist</button>
+                                       {
+                                        isBuyer && 
+                                        <>
+                                         <button onClick={() => handleWishList(product)} className='btn'>Add to Wishlist</button>
+                                        </>
+                                       }
                                         <div>
                                             <input type="checkbox" id="booking-modal" className="modal-toggle" />
                                             <div className="modal">

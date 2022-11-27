@@ -7,7 +7,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyProducts = () => {
     const {user} = useContext(AuthContext);
-    const { data: SellerProduct = [], isLoading, refetch } = useQuery({
+    const { data: SellerProduct = [], refetch } = useQuery({
         queryKey: ['SellerProduct'],
         queryFn: async () => {
             try {
@@ -23,7 +23,6 @@ const MyProducts = () => {
 
 
     // delete product
-
     const handleDelete = product => {
         fetch(`http://localhost:5000/myproducts/${product._id}`, {
             method: 'DELETE',
@@ -42,10 +41,39 @@ const MyProducts = () => {
             })
 
     }
-    // 
+    // handle advertise items
+    const handleAdvertiseItem = product =>{
+        const advertise = {
+            productName: product.productName,
+            sellerName: product.sellerName,
+            resalePrice: product.resalePrice,
+            location: product.location,
+            condition: product.condition,
+            used: product.used,
+            
+        }
+        console.log(advertise);
+        fetch('http://localhost:5000/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(advertise)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success('Product add to advertised list!!');
+                }
+                else {
+                    toast.error(data.message);
+                }
+            })
+    }
     return (
         <div>
-            <h2 className='text-3xl font-semibold  mt-10'>My products:</h2>
+            <h2 className='text-3xl font-semibold mx-4 mt-10'>My products:</h2>
             <div>
                 {
                     SellerProduct.length === 0 ? <h2 className='text-3xl font-semibold mt-10 text-center'>You Have not add any Products</h2> :
@@ -55,7 +83,6 @@ const MyProducts = () => {
                                     <div className="card-body">
                                         <h2 className="card-title">Product Name: {product.productName}</h2>
                                         <h2 className='text-xl'>Seller Name: {product.sellerName}</h2>
-                                        <h2 className='text-xl'>Product Name: {product.productName}</h2>
                                         <h2 className='text-xl'>Resale Price: {product.resalePrice} BDT</h2>
                                         <h2 className='text-xl'>Original Price: {product.originalPrice} BDT</h2>
                                         <h2 className='text-xl'>Location: {product.location}</h2>
@@ -67,8 +94,12 @@ const MyProducts = () => {
                                                 <button className="btn bg-red-700">Delete</button>
                                             </Link>
                                             <Link>
-                                                <button className="btn bg-green-800">Available</button>
+                                                <button className="btn btn-secondary">Available</button>
                                             </Link>
+                                            <Link>
+                                                <button onClick={()=>handleAdvertiseItem(product)} className="btn btn-primary">Advertise</button>
+                                            </Link>
+                                            
                                             
                                         </div>
 
