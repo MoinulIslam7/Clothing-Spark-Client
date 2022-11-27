@@ -12,6 +12,7 @@ const useToken = email => {
                         setToken(data.accessToken);
                     }
                 });
+        }
     }, []);
     return [token];
 }

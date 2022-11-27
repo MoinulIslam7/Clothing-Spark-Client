@@ -15,9 +15,9 @@ const Signup = () => {
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
-    if(token){
-        navigate('/');
-    }
+    // if(token){
+    //     navigate('/');
+    // }
 
 
 
@@ -55,6 +55,7 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 setCreatedUserEmail(email);
+                navigate('/');
             })
     }
 

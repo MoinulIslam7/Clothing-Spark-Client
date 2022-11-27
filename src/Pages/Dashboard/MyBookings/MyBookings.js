@@ -9,9 +9,9 @@ const MyBookings = () => {
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
+                // headers: {
+                //     authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                // }
             });
             const data = await res.json();
             return data;

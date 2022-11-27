@@ -7,7 +7,7 @@ const CategoryDetails = () => {
     const { products } = useLoaderData();
     const { user } = useContext(AuthContext);
 
-    const handleWishList = (product) =>{
+    const handleWishList = (product) => {
         const wishList = {
             name: user.displayName,
             email: user.email,
@@ -91,7 +91,7 @@ const CategoryDetails = () => {
                                     <p className='border-2 p-2'>Used Duration: {product.usedTime}</p>
                                     <p className='border-2 p-2'>Post Time: {product.postTime}</p>
                                     <p className='border-2 p-2'>Seller Name: {product.sellersName}</p>
-                                    
+
                                     <div className="card-actions justify-center flex">
                                         <label htmlFor="booking-modal" className="btn">Book Now</label>
                                         <button onClick={() => handleWishList(product)} className='btn'>Add to Wishlist</button>
@@ -107,10 +107,7 @@ const CategoryDetails = () => {
                                                         <input name='resalePrice' type="text" disabled defaultValue={product.resalePrice} className="input input-bordered w-full" />
                                                         <input required name='phone' type="text" placeholder='Your Phone Number' className="input input-bordered w-full" />
                                                         <input required name='location' type="text" placeholder='Meeting Location' className="input input-bordered w-full " />
-
-                                                        <div className="modal-action">
-                                                            <input htmlFor="booking-modal" className='btn btn-primary' type="Submit" value="Submit" />
-                                                        </div>
+                                                        <input htmlFor="booking-modal" className='btn btn-primary' type="Submit" value="Submit" />
                                                     </form>
                                                 </div>
                                             </div>

@@ -5,6 +5,7 @@ import Blog from "../Pages/Blog/Blog";
 import CategoryDetails from "../Pages/CategoryDetails/CategoryDetails";
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import MyWishList from "../Pages/Dashboard/MyWishList/MyWishList";
+import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
 import Home from "../Pages/Home/Home"
 import Login from "../Pages/Login/Login";
 import PageNotFount from "../Pages/Shared/PageNotFound/PageNotFount";
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/MyWishList',
                 element: <MyWishList></MyWishList>
+            },
+            {
+                path: '/dashboard/addproduct',
+                element: <AddProduct></AddProduct>
             },
         ]
     },
