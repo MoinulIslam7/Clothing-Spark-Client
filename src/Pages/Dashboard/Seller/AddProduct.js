@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProduct = () => {
@@ -33,7 +33,7 @@ const AddProduct = () => {
             phone,
         }
         console.log(product)
-        fetch('http://localhost:5000/addproduct', {
+        fetch('https://clothing-spark-server.vercel.app/addproduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -93,7 +93,7 @@ const AddProduct = () => {
                         <div className="mt-6 w-full">
                             <label htmlFor="condition" className="text-sm font-medium leading-none text-gray-800">
                                 {" "}
-                               Condition of the product{" "}
+                                Condition of the product{" "}
                             </label>
                             <select name='condition' id='condition' className="select w-full my-2 bg-gray-200 border rounded text-xs text-gray-900" required>
                                 <option disabled selected>select condition</option>

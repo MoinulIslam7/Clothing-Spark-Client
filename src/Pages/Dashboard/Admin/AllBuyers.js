@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AllBuyers = () => {
     const [buyers, setBuyers] = useState([]);
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/users`);
+                const res = await fetch(`https://clothing-spark-server.vercel.app/users`);
                 const data = await res.json();
                 const showBuyers = data.filter(buyer => buyer.status === "user")
                 setBuyers(showBuyers)
@@ -26,7 +26,7 @@ const AllBuyers = () => {
 
     const handleDelete = user => {
         console.log(user)
-        fetch(`http://localhost:5000/user/${user._id}`, {
+        fetch(`https://clothing-spark-server.vercel.app/user/${user._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

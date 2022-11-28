@@ -6,12 +6,12 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 
 const MyProducts = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const { data: SellerProduct = [], refetch } = useQuery({
         queryKey: ['SellerProduct'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/myproducts/${user?.email}`);
+                const res = await fetch(`https://clothing-spark-server.vercel.app/myproducts/${user?.email}`);
                 const data = await res.json();
                 return data;
             }
@@ -24,7 +24,7 @@ const MyProducts = () => {
 
     // delete product
     const handleDelete = product => {
-        fetch(`http://localhost:5000/myproducts/${product._id}`, {
+        fetch(`https://clothing-spark-server.vercel.app/myproducts/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -42,7 +42,7 @@ const MyProducts = () => {
 
     }
     // handle advertise items
-    const handleAdvertiseItem = product =>{
+    const handleAdvertiseItem = product => {
         const advertise = {
             productName: product.productName,
             sellerName: product.sellerName,
@@ -50,10 +50,10 @@ const MyProducts = () => {
             location: product.location,
             condition: product.condition,
             used: product.used,
-            
+
         }
         console.log(advertise);
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://clothing-spark-server.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -97,10 +97,9 @@ const MyProducts = () => {
                                                 <button className="btn btn-secondary">Available</button>
                                             </Link>
                                             <Link>
-                                                <button onClick={()=>handleAdvertiseItem(product)} className="btn btn-primary">Advertise</button>
+                                                <button onClick={() => handleAdvertiseItem(product)} className="btn btn-primary">Advertise</button>
                                             </Link>
-                                            
-                                            
+
                                         </div>
 
                                     </div>

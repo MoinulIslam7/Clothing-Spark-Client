@@ -18,7 +18,7 @@ const CategoryDetails = () => {
             originalPrice: product.originalPrice,
         }
         console.log(wishList);
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://clothing-spark-server.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -56,7 +56,7 @@ const CategoryDetails = () => {
         }
         console.log(booking)
         // and once data is saved then close the modal and display success toast
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://clothing-spark-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -96,12 +96,12 @@ const CategoryDetails = () => {
 
                                     <div className="card-actions justify-center flex">
                                         <label htmlFor="booking-modal" className="btn">Book Now</label>
-                                       {
-                                        isBuyer && 
-                                        <>
-                                         <button onClick={() => handleWishList(product)} className='btn'>Add to Wishlist</button>
-                                        </>
-                                       }
+                                        {
+                                            isBuyer &&
+                                            <>
+                                                <button onClick={() => handleWishList(product)} className='btn'>Add to Wishlist</button>
+                                            </>
+                                        }
                                         <div>
                                             <input type="checkbox" id="booking-modal" className="modal-toggle" />
                                             <div className="modal">

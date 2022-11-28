@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyBookings = () => {
-    const {user} = useContext(AuthContext);
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
-    const {data: bookings = []} = useQuery({
+    const { user } = useContext(AuthContext);
+    const url = `https://clothing-spark-server.vercel.app/bookings?email=${user?.email}`
+    const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -34,19 +34,19 @@ const MyBookings = () => {
                         </tr>
                     </thead>
                     <tbody>
-                       {
-                        bookings.map((booking, i) =>
-                            <tr key={i}>
-                            <th>{i+1}</th>
-                            <td>{booking.name}</td>
-                            <td>{booking.productName}</td>
-                            <td>{booking.phone}</td>
-                            <td>{booking.resalePrice}</td>
-                            <td>{booking.location}</td>
-                        </tr>
-                        )
-                       }
-                       
+                        {
+                            bookings.map((booking, i) =>
+                                <tr key={i}>
+                                    <th>{i + 1}</th>
+                                    <td>{booking.name}</td>
+                                    <td>{booking.productName}</td>
+                                    <td>{booking.phone}</td>
+                                    <td>{booking.resalePrice}</td>
+                                    <td>{booking.location}</td>
+                                </tr>
+                            )
+                        }
+
                     </tbody>
                 </table>
             </div>

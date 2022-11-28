@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: () => fetch(`http://localhost:5000/products`),
+                loader: () => fetch(`https://clothing-spark-server.vercel.app/products`),
                 element: <Home></Home>
             },
             {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             {
                 path: '/categoryDetails/:id',
                 element: <CategoryDetails></CategoryDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://clothing-spark-server.vercel.app/products/${params.id}`)
             },
 
         ]

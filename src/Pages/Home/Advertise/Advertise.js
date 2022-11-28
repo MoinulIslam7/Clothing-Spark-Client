@@ -12,7 +12,7 @@ const Advertise = () => {
         queryKey: ['advertised'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/advertise/${user?.email}`);
+                const res = await fetch(`https://clothing-spark-server.vercel.app/advertise/${user?.email}`);
                 const data = await res.json();
                 return data;
             }
@@ -27,7 +27,7 @@ const Advertise = () => {
     }
     // delete advertised
     const handleDelete = product => {
-        fetch(`http://localhost:5000/advertise/${product._id}`, {
+        fetch(`https://clothing-spark-server.vercel.app/advertise/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -70,7 +70,7 @@ const Advertise = () => {
                                         {
                                             isAdmin &&
                                             <Link onClick={() => handleDelete(product)}>
-                                                <button className="btn bg-red-700">Delete</button>
+                                                <button className="btn bg-red-700 ">Delete</button>
                                             </Link>
                                         }
 

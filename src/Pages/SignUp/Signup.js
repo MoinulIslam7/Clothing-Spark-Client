@@ -45,7 +45,7 @@ const Signup = () => {
     // save user in  database
     const saveUser = (name, email, status) => {
         const user = { name, email, status };
-        fetch('http://localhost:5000/users', {
+        fetch('https://clothing-spark-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
