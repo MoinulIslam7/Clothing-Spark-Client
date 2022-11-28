@@ -3,11 +3,11 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
-import UseSeller from '../../../Hooks/UseSeller';
+import UseAdmin from '../../../Hooks/UseAdmin';
 
 const Advertise = () => {
     const { user } = useContext(AuthContext);
-    const [isSeller] = UseSeller(user?.email)
+    const [isAdmin] = UseAdmin(user?.email)
     const { data: advertised = [], refetch } = useQuery({
         queryKey: ['advertised'],
         queryFn: async () => {
@@ -48,7 +48,7 @@ const Advertise = () => {
         <div>
 
             {
-                advertised.length === 0 ? <h2></h2>
+                advertised.length === 0 ? <h2> </h2>
                     :
                     <>
                         <h2 className="text-5xl text-center m-8">Advertised Items</h2>
@@ -68,7 +68,7 @@ const Advertise = () => {
                                             <button className="btn btn-primary">Book Now</button>
                                         </Link>
                                         {
-                                            isSeller &&
+                                            isAdmin &&
                                             <Link onClick={() => handleDelete(product)}>
                                                 <button className="btn bg-red-700">Delete</button>
                                             </Link>

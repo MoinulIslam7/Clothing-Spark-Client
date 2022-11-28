@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState, useContext} from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
@@ -5,14 +6,23 @@ import { AuthContext } from '../../../Context/AuthProvider';
 const AllBuyers = () => {
     const [buyers, setBuyers] = useState([]);
     const {user} = useContext(AuthContext);
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => {
+
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            try {
+                const res = await fetch(`http://localhost:5000/users`);
+                const data = await res.json();
                 const showBuyers = data.filter(buyer => buyer.status === "user")
                 setBuyers(showBuyers)
-            })
-    }, [user])
+                return showBuyers;
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    })
+
 
     const handleDelete = user => {
         console.log(user)
@@ -28,10 +38,8 @@ const AllBuyers = () => {
                 if (data.acknowledged) {
                     toast.success('user Deleted Successfully')
                 }
-
-                // const remaining= myProducts.filter(product => product._id )
+                refetch();
             })
-
     }
     return (
         <div>

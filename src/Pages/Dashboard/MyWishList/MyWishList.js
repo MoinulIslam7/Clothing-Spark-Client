@@ -15,7 +15,7 @@ const MyWishList = () => {
     })
     return (
         <div>
-        <h2 className="text-2xl">My Orders: </h2>
+        <h2 className="text-2xl mx-8 ">My Orders: </h2>
         <div className="overflow-x-auto">
             <table className="table w-full">
                 <thead>

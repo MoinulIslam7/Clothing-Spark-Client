@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><Link to='/Blog'>Blog</Link></li>
 
         {
-            user?.uid ?
+            user?.email ?
                 <>
                     <li><Link to='/dashboard'>Dashboard</Link></li>
                     <li><button onClick={handleLogOut}>Sign Out</button></li>
@@ -26,6 +26,7 @@ const Navbar = () => {
                     <li><Link to='/signup'>Sign Up</Link></li>
                 </>
         }
+        
     </React.Fragment>
 
     return (

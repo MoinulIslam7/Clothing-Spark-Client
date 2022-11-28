@@ -8,7 +8,7 @@ const PrivateRoutes = ({children}) => {
     if(loading){
        return <button className="mx-96 w-80 mt-32 btn btn-square loading">Loading...</button>
     }
-    if(user){
+    if(user?.email){
         return children;
     }
     return <Navigate to="/login" state={{from: location}} replace></Navigate>
