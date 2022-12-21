@@ -6,7 +6,7 @@ This project was about Clothing Resale. The project can use for resale cloths in
 
 adminEmail: <moinul180180@gmail.com>
 
-adminPassword: <moinul>
+adminPassword: < moinul >
 
 ***
 ## Languages
