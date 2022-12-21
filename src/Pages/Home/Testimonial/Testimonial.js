@@ -1,16 +1,16 @@
 import React from 'react';
-import quote from '../../../assets/icons/quote.svg'
-import people1 from '../../../assets/images/people1.png'
-import people2 from '../../../assets/images/people2.png'
-import people3 from '../../../assets/images/people3.png'
+import quote from '../../../Assets/img/quote.svg'
+import people1 from '../../../Assets/img/people1.png'
+import people2 from '../../../Assets/img/people2.png'
+import people3 from '../../../Assets/img/people3.png'
 import Review from './Review';
 
 const Testimonial = () => {
     const reviews = [
         {
             _id: 1,
-            name: "Winson Herry",
-            reviews: "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
+            name: "Roberto Carlos",
+            reviews: "It is a very good platform for resale clothing",
             location: "California",
             img: people1
 
@@ -18,31 +18,26 @@ const Testimonial = () => {
         {
             _id: 2,
             name: "Winson Herry",
-            reviews: "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-            location: "California",
+            reviews: "This is a best platform for resale clothing",
+            location: "Germany",
             img: people2
 
         },
         {
             _id: 3,
-            name: "Winson Herry",
-            reviews: "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
-            location: "California",
+            name: "Hilary Clinton",
+            reviews: "Awesome Plat from and best services",
+            location: "New York",
             img: people3
 
         },
     ]
     return (
-        <section className='my-16'>
-            <div className='flex justify-between'>
-                <div>
-                    <h4 className='text-xl text-primary font-bold'>Testimonial</h4>
-                    <h2 className='text-4xl'>What Our Patients Says</h2>
+        <section className='my-16 '>
+                <div className='text-center'>
+                    <h4 className='text-4xl text-primary font-bold '>Testimonial</h4>
+                    <h2 className='text-xl'>What Our Client Says</h2>
                 </div>
-                <figure>
-                    <img className='w-24 lg:w-48' src={quote} alt="" />
-                </figure>
-            </div>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     reviews.map(review => <Review

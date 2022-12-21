@@ -3,7 +3,7 @@ import React from 'react';
 const Review = ({ review }) => {
     const { name, img, reviews, location } = review;
     return (
-        <div className="card shadow-xl">
+        <div className="card shadow-xl brightness-400">
             <div className="card-body">
                 <p>{reviews}</p>
                 <div className="flex items-center mt-6 ">
