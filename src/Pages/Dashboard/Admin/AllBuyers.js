@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -22,7 +22,6 @@ const AllBuyers = () => {
             }
         }
     })
-
 
     const handleDelete = user => {
         console.log(user)

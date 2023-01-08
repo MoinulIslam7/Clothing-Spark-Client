@@ -60,9 +60,9 @@ const Signup = () => {
     }
 
     return (
-        <div className='lg:flex justify-center  items-center'>
+        <div className='lg:flex justify-center items-center'>
             <div>
-                <img className=' h-3/4' src={signup} alt="" />
+                <img className='h-3/4' src={signup} alt="" />
             </div>
             <div className='w-96 p-7'>
                 <h2 className='text-4xl font-bold text-center'>Sign Up</h2>
@@ -109,8 +109,6 @@ const Signup = () => {
                 </form>
                 <p className='text-center mt-2'>Already Have an Account? <Link className='text-secondary' to='/signup'>Login Here</Link></p>
             </div>
-
-
         </div>
     );
 };
