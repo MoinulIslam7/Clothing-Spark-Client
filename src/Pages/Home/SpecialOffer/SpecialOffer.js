@@ -4,7 +4,7 @@ const SpecialOffer = () => {
     return (
         <div>
             <div className="hero">
-                <div className="hero-content flex-col lg:flex-row">
+                <div className="hero-content flex-col lg:flex-row transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="https://cdn.shopify.com/s/files/1/0564/4081/5810/files/Brazil_vs_Argentina_720x.png?v=1669295907" className="max-w-sm rounded-lg shadow-2xl" alt='' />
                     <div>
                         <h1 className="text-3xl font-bold">Clothing Spark World Cup Fest</h1>

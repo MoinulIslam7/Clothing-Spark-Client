@@ -51,7 +51,7 @@ const Login = () => {
     return (
         <div className='lg:flex justify-center h-[800px] items-center'>
             <div>
-                <img className='h-3/4' src={login} alt="img" />
+                <img className='h-3/4 shadow-xl' src={login} alt="img" />
             </div>
             <div className='p-8 h-3/4 shadow-2xl'>
                 <h2 className='text-3xl text-center font-bold'>Login</h2>

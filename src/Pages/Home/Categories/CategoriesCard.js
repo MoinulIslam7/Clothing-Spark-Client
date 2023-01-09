@@ -8,7 +8,7 @@ const CategoriesCard = ({categoryData}) => {
         <div  className="card card-compact w-96 h-3/4 shadow-xl p-3">
             <motion.div  initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-         className="card-body">
+         className="card-body transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                 <img className='w-full h-96' src={img} alt="" />
                 <h2 className="card-title justify-center">{category}</h2>
                 <div className="card-actions justify-center">

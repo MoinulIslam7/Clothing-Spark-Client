@@ -10,6 +10,7 @@ import MyWishList from "../Pages/Dashboard/MyWishList/MyWishList";
 import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
 import MyBuyers from "../Pages/Dashboard/Seller/MyBuyers";
 import MyProducts from "../Pages/Dashboard/Seller/MyProducts";
+import Categories from "../Pages/Home/Categories/Categories";
 import Home from "../Pages/Home/Home"
 import Login from "../Pages/Login/Login";
 import PageNotFount from "../Pages/Shared/PageNotFound/PageNotFount";
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/categories',
+                element: <Categories></Categories>
             },
             {
                 path: '/blog',
